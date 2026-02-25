@@ -6,8 +6,11 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0-alpha.22",
     "@types/react": "^18.2.21",
     "eslint": "^8.21.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0-alpha.22",
     "turbo": "^2.4.4",
     "typescript": "^5.2.2"
   },
@@ -16,6 +19,9 @@
     "web": "cd apps/next && yarn next"
   },
   "packageManager": "yarn@4.7.0",
+  "overrides": {
+    "lightningcss": "1.30.1"
+  },
   "eslintConfig": {
     "extends": "next",
     "settings": {

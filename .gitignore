@@ -84,3 +84,5 @@ build/**
 # Editor & tooling metadata
 .vscode/
 .cursor
+
+.env.local

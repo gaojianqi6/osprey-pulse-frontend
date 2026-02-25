@@ -1,5 +1,7 @@
 // Learn more https://docs.expo.dev/guides/monorepos
 // Learn more https://docs.expo.io/guides/customizing-metro
+const { withNativewind } = require('nativewind/metro')
+
 /**
  * @type {import('expo/metro-config')}
  */
@@ -25,4 +27,4 @@ config.transformer.getTransformOptions = async () => ({
   },
 })
 
-module.exports = config
+module.exports = withNativewind(config)

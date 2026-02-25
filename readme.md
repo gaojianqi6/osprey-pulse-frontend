@@ -43,7 +43,7 @@ osprey-pulse-frontend/
 ## 🚀 Tech Stack
 
 - **Framework:** [Solito](https://solito.dev) (Unifies Next.js + Expo)
-- **Styling:** [NativeWind v4](https://www.nativewind.dev) (Tailwind CSS for React Native)
+- **Styling:** [NativeWind v5](https://www.nativewind.dev/v5) (Tailwind CSS for React Native)
 - **Data Fetching:** [Apollo Client](https://www.apollographql.com/docs/react) (GraphQL)
 - **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
 - **Icons:** [Lucide React Native](https://lucide.dev)
@@ -117,6 +117,24 @@ If a feature must work differently on Web and Mobile (e.g., File Uploads), use f
 
 ---
 
+## 🧩 Stitch Home Page Assets
+
+We use Stitch to design the NBA home experience.
+
+- **Project:** Home Page - NBA Channel (`8593798284271653726`)
+- **Screen:** Home Page - Final Polish (`9b88ce73066748aea9539d483cf2aff0`)
+
+When you have the hosted export URLs from Stitch, download them into the shared app package (for example):
+
+```bash
+curl -L "<PASTE_STITCH_CODE_URL>" -o packages/app/features/home/stitch/home-page.tsx
+curl -L "<PASTE_STITCH_ASSETS_URL>" -o packages/app/features/home/stitch/assets.zip
+```
+
+Then wire the exported component into `packages/app/features/home/screen.tsx` or a dedicated `StitchHomeScreen` wrapper so the same design is shared by both Expo and Next.
+
+---
+
 ## 🛠 Setup Instructions
 
 1. **Install Dependencies:**
@@ -125,7 +143,7 @@ If a feature must work differently on Web and Mobile (e.g., File Uploads), use f
    ```
 
 2. **Start .NET Backend:**
-   Ensure your .NET 10 API is running at `http://localhost:5001/graphql`.
+   Ensure your .NET 10 API is running at `http://localhost:5018/graphql`.
 
 3. **Start Development Servers:**
    - **Web:** `yarn web` (Next.js at localhost:3000)

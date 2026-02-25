@@ -10,6 +10,7 @@ const withWebpack = {
 
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
+      '@': path.resolve(__dirname, '../..'),
       'react-native': 'react-native-web',
       'react-native$': 'react-native-web',
       'react-native/Libraries/EventEmitter/RCTDeviceEventEmitter$':
@@ -38,6 +39,7 @@ const withWebpack = {
 const withTurpopack = {
   turbopack: {
     resolveAlias: {
+      '@': path.resolve(__dirname, '../..'),
       'react-native': 'react-native-web',
       'react-native/Libraries/EventEmitter/RCTDeviceEventEmitter$':
         'react-native-web/dist/vendor/react-native/NativeEventEmitter/RCTDeviceEventEmitter',
