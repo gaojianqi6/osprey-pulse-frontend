@@ -33,5 +33,6 @@
     "useTabs": false,
     "tabWidth": 2,
     "singleQuote": true
-  }
+  },
+  "version": "0.0.0"
 }
