@@ -10,6 +10,9 @@ const path = require('path')
 const projectRoot = __dirname
 const workspaceRoot = path.resolve(projectRoot, '../..')
 
+// Load .env / .env.local from monorepo root so EXPO_PUBLIC_* there is available
+require('@expo/env').load(projectRoot, { force: true })
+
 const config = getDefaultConfig(projectRoot)
 
 config.watchFolders = [workspaceRoot]
