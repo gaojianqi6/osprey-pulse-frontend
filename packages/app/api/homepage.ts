@@ -1,44 +1,8 @@
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client/react'
 import type { HomepageData } from 'app/types/nba'
+import { HOMEPAGE_QUERY } from './homepage-query'
 
-export const HOMEPAGE_QUERY = gql`
-  query Homepage {
-    homepage(postsLimit: 20) {
-      nbaTodayCompetitions {
-        externalId
-        startTime
-        homeTeam {
-          id
-          name
-          nickname
-          code
-          city
-          logoUrl
-        }
-        awayTeam {
-          id
-          name
-          nickname
-          code
-          city
-          logoUrl
-        }
-        homeScore
-        awayScore
-      }
-      nbaPosts {
-        id
-        title
-        shortDescription
-        previewImg
-        externalId
-        type
-        createdAt
-        lastBumpedAt
-      }
-    }
-  }
-`
+export { HOMEPAGE_QUERY }
 
 export function useHomepage() {
   return useQuery<HomepageData>(HOMEPAGE_QUERY)

@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react'
 import { Text, View, Pressable, ActivityIndicator } from 'react-native'
 import { useHomepage } from 'app/api/homepage'
+import type { HomepageData } from 'app/types/nba'
 import {
   Header,
   ChannelNavs,
@@ -10,27 +11,40 @@ import {
   CommunityFeed,
 } from './components'
 
+type HomeScreenProps = {
+  /** Server-fetched data for SEO; when present, skip loading state on first render */
+  initialData?: HomepageData | null
+}
+
 /**
  * Web home: one scrollable container (100vh + overflow-y: auto) so the
  * browser handles mouse wheel. RN ScrollView doesn't on web.
  */
-export function HomeScreen() {
+export function HomeScreen({ initialData }: HomeScreenProps) {
   const { data, loading, error, refetch } = useHomepage()
 
-  const competitions = useMemo(
-    () => data?.homepage?.nbaTodayCompetitions ?? [],
-    [data]
-  )
-  const posts = useMemo(() => data?.homepage?.nbaPosts ?? [], [data])
+  // Prefer server data when available; fall back to client data
+  const resolvedData = initialData ?? data
+  const showLoading = !resolvedData && loading
+  const showError = !resolvedData && error
 
-  const mainContent = loading ? (
+  const competitions = useMemo(
+    () => resolvedData?.homepage?.nbaTodayCompetitions ?? [],
+    [resolvedData]
+  )
+  const posts = useMemo(
+    () => resolvedData?.homepage?.nbaPosts ?? [],
+    [resolvedData]
+  )
+
+  const mainContent = showLoading ? (
     <View className="min-h-[280px] items-center justify-center py-20">
       <ActivityIndicator size="large" color="#ff4400" />
       <Text className="mt-3 text-sm text-slate-400">
         Loading…
       </Text>
     </View>
-  ) : error ? (
+  ) : showError ? (
     <View className="min-h-[280px] items-center justify-center px-4 py-20">
       <Text className="mb-3 text-center text-sm text-red-400">
         We couldn&apos;t load the homepage.

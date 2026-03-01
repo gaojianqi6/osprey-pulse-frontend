@@ -6,13 +6,13 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
  * - Android Emulator: set EXPO_PUBLIC_GRAPHQL_URL=http://10.0.2.2:5018/graphql (e.g. in apps/expo/.env).
  * - Physical device / ngrok: set EXPO_PUBLIC_GRAPHQL_URL in apps/expo/.env (Expo only loads .env from apps/expo).
  */
-const uri =
+export const uri =
   process.env.NEXT_PUBLIC_GRAPHQL_URL ??
   process.env.EXPO_PUBLIC_GRAPHQL_URL ??
   'http://localhost:5018/graphql'
   
 /** ngrok free tier returns an HTML interstitial unless this header is sent; safe to send for all requests. */
-const headers: Record<string, string> = {
+export const headers: Record<string, string> = {
   'ngrok-skip-browser-warning': '1',
 }
 

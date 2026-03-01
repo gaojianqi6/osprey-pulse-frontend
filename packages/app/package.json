@@ -1,9 +1,9 @@
 {
   "version": "0.0.0",
-  "name": "app",
+  "name": "osprey-pulse-app",
   "main": "index.ts",
   "dependencies": {
-    "@apollo/client": "~3.13.8",
+    "@apollo/client": "~4.1.6",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.15",
     "@react-navigation/native-stack": "^7.2.1",
@@ -13,6 +13,7 @@
     "lucide-react-native": "0.564.0",
     "moti": "^0.30.0",
     "react-redux": "^9.2.0",
+    "rxjs": "^7.8.2",
     "solito": "next"
   },
   "sideEffects": false

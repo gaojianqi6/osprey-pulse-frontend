@@ -1,6 +1,7 @@
 import { StylesProvider } from './styles-provider'
 import './globals.css'
 import { Provider } from 'app/provider'
+import { ApolloWrapper } from './ApolloWrapper'
 
 export const metadata = {
   title: 'Create Solito App',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background-dark">
       <body className="min-h-screen bg-background-dark text-slate-100">
-        <Provider>
-          <StylesProvider>{children}</StylesProvider>
-        </Provider>
+        <ApolloWrapper>
+          <Provider>
+            <StylesProvider>{children}</StylesProvider>
+          </Provider>
+        </ApolloWrapper>
       </body>
     </html>
   )
