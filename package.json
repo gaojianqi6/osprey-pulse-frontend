@@ -16,6 +16,9 @@
     "web": "cd apps/next && yarn next"
   },
   "packageManager": "yarn@4.7.0",
+  "overrides": {
+    "@apollo/client": "3.13.8"
+  },
   "eslintConfig": {
     "extends": "next",
     "settings": {
