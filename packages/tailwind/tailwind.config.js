@@ -12,6 +12,10 @@ module.exports = {
     // Exclude node_modules to avoid scanning thousands of dependency files
     `!${path.join(workspaceRoot, '**/node_modules')}`,
     `!${path.join(workspaceRoot, '**/node_modules/**')}`,
+    `!${path.join(workspaceRoot, 'apps/expo/node_modules')}`,
+    `!${path.join(workspaceRoot, 'apps/expo/node_modules/**')}`,
+    `!${path.join(workspaceRoot, 'apps/next/node_modules')}`,
+    `!${path.join(workspaceRoot, 'apps/next/node_modules/**')}`,
   ],
   presets: [nativewindPreset],
   theme: {
@@ -20,6 +24,9 @@ module.exports = {
         primary: '#ff4400',
         'background-light': '#f8f6f5',
         'background-dark': '#23140f',
+        // Repeated across Header, ChannelNavs, CommunityFeed, screens (2+ places)
+        'primary-border-subtle': 'rgba(255,68,0,0.08)',
+        'primary-subtle': 'rgba(255,68,0,0.1)',
       },
     },
   },

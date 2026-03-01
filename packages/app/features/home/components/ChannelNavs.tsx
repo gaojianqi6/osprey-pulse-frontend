@@ -15,7 +15,7 @@ type ChannelNavsProps = {
 
 export function ChannelNavs({ activeId = 'nba', onChannelPress }: ChannelNavsProps) {
   return (
-    <View style={{ borderBottomWidth: 1, borderBottomColor: 'rgba(255,68,0,0.06)', backgroundColor: '#23140f', width: '100%', maxWidth: '100%' }}>
+    <View className="w-full max-w-full border-b border-primary/6 bg-background-dark">
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -37,13 +37,11 @@ export function ChannelNavs({ activeId = 'nba', onChannelPress }: ChannelNavsPro
             >
               <Text
                 className={`text-sm font-bold ${isActive ? 'text-primary' : 'text-slate-400'}`}
-                style={{ fontSize: 14, fontWeight: '700', color: isActive ? '#ff4400' : '#94a3b8' }}
               >
                 {ch.label}
               </Text>
               <View
-                className={isActive ? 'bg-primary' : 'bg-transparent'}
-                style={{ height: 4, width: 24, borderRadius: 2, backgroundColor: isActive ? '#ff4400' : 'transparent' }}
+                className={`h-1 w-6 rounded-sm ${isActive ? 'bg-primary' : 'bg-transparent'}`}
               />
             </Pressable>
           )

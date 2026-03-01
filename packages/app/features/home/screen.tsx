@@ -18,42 +18,34 @@ export function HomeScreen() {
   const posts = useMemo(() => data?.homepage?.nbaPosts ?? [], [data])
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#23140f',
-        width: '100%',
-        maxWidth: '100%',
-      }}
-    >
+    <View className="w-full max-w-full flex-1 bg-background-dark">
       <Header />
       <ChannelNavs activeId="nba" />
 
       {loading ? (
-        <View className="flex-1 items-center justify-center py-20" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 80 }}>
+        <View className="flex-1 items-center justify-center py-20">
           <ActivityIndicator size="large" color="#ff4400" />
-          <Text className="mt-3 text-sm text-slate-400" style={{ marginTop: 12, fontSize: 14, color: '#94a3b8' }}>
+          <Text className="mt-3 text-sm text-slate-400">
             Loading…
           </Text>
         </View>
       ) : error ? (
-        <View className="flex-1 items-center justify-center px-4 py-20" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, paddingVertical: 80 }}>
-          <Text className="mb-3 text-center text-sm text-red-400" style={{ marginBottom: 12, fontSize: 14, color: '#f87171' }}>
+        <View className="flex-1 items-center justify-center px-4 py-20">
+          <Text className="mb-3 text-center text-sm text-red-400">
             We couldn&apos;t load the homepage.
           </Text>
           <Pressable
             onPress={() => refetch()}
             className="rounded-full border border-slate-600 bg-slate-800 px-4 py-2"
-            style={{ borderRadius: 9999, borderWidth: 1, borderColor: '#475569', backgroundColor: '#1e293b', paddingHorizontal: 16, paddingVertical: 8 }}
           >
-            <Text className="text-xs font-semibold uppercase tracking-wider text-slate-100" style={{ fontSize: 12, fontWeight: '600', color: '#f1f5f9' }}>
+            <Text className="text-xs font-semibold uppercase tracking-wider text-slate-100">
               Retry
             </Text>
           </Pressable>
         </View>
       ) : (
         <ScrollView
-          style={{ flex: 1, minWidth: 0, minHeight: 0, maxWidth: '100%' }}
+          className="min-h-0 min-w-0 max-w-full flex-1"
           contentContainerStyle={{
             paddingHorizontal: 16,
             paddingBottom: 32,
@@ -65,22 +57,19 @@ export function HomeScreen() {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
-          <View style={{ marginBottom: 32 }}>
+          <View className="mb-8">
             <GamesTodaysCompetition competitions={competitions} />
           </View>
           <CommunityFeed posts={posts} />
 
-          <View
-            className="mt-6 items-center gap-4 border-t border-primary/5 pt-6"
-            style={{ marginTop: 24, alignItems: 'center', gap: 16, borderTopWidth: 1, borderTopColor: 'rgba(255,68,0,0.08)', paddingTop: 24 }}
-          >
-            <Text className="text-xs font-medium text-slate-400" style={{ fontSize: 12, color: '#94a3b8' }}>
+          <View className="mt-6 items-center gap-4 border-t border-primary-border-subtle pt-6">
+            <Text className="text-xs font-medium text-slate-400">
               Osprey Pulse © 2024
             </Text>
-            <View className="flex-row gap-6" style={{ flexDirection: 'row', gap: 24 }}>
-              <Pressable><Text style={{ fontSize: 12, color: '#64748b' }}>Terms</Text></Pressable>
-              <Pressable><Text style={{ fontSize: 12, color: '#64748b' }}>Privacy</Text></Pressable>
-              <Pressable><Text style={{ fontSize: 12, color: '#64748b' }}>Support</Text></Pressable>
+            <View className="flex-row gap-6">
+              <Pressable><Text className="text-xs text-slate-500">Terms</Text></Pressable>
+              <Pressable><Text className="text-xs text-slate-500">Privacy</Text></Pressable>
+              <Pressable><Text className="text-xs text-slate-500">Support</Text></Pressable>
             </View>
           </View>
         </ScrollView>
